@@ -46,23 +46,6 @@ public class AdressRest {
         }
         return gson.toJson(ad);
     }
-
-    @GET
-    @Path("cities")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getCities() {
-        String city = null;
-        try {
-             List<Adress> ad = uf.getadresses();
-            System.out.println(gson.toJson(adress));
-            city = gson.toJson(adress);
-        } catch (Exception e) {
-            System.out.println("Exception Error"); //Console 
-        }
-        return city;
-    }
-    
-    
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
