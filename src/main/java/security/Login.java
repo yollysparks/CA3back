@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.*;
+import entity.User;
 import facades.UserFacade;
 import java.security.SecureRandom;
 import java.util.Date;
@@ -27,7 +28,7 @@ public class Login {
   public String gt() {
     return "{\"txt\" : \"TEST\"}";
   }
-
+  
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)

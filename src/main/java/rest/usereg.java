@@ -90,6 +90,7 @@ public class usereg {
       JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
       String username = json.get("username").getAsString();
       String password = json.get("password").getAsString();
+      String email = json.get("email").getAsString();
       JsonObject responseJson = new JsonObject();
       List<String> roles;
 
@@ -104,7 +105,7 @@ public class usereg {
         throw e;
       }
     }
-    throw new NotAuthorizedException("Invalid username or password! Please try again", Response.Status.UNAUTHORIZED);
+    throw new NotAuthorizedException("username or password exist! Please try again", Response.Status.UNAUTHORIZED);
   }
 
   private List<String> authenticate(String userName, String password) {

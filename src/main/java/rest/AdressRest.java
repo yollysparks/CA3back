@@ -15,6 +15,7 @@ import javax.persistence.Persistence;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -25,7 +26,7 @@ import javax.ws.rs.core.MediaType;
 @Path("adress")
 public class AdressRest {
 
-   
+   List<Adress> adress;
    private UserFacade uf;
     private EntityManagerFactory emf;
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -36,6 +37,33 @@ public class AdressRest {
         this.uf = new UserFacade(emf);
     }
 
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCity(@PathParam("id") int id) {
+        List<Adress> ad = uf.getadresses();
+        if (ad == null) {
+        }
+        return gson.toJson(ad);
+    }
+
+    @GET
+    @Path("cities")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCities() {
+        String city = null;
+        try {
+             List<Adress> ad = uf.getadresses();
+            System.out.println(gson.toJson(adress));
+            city = gson.toJson(adress);
+        } catch (Exception e) {
+            System.out.println("Exception Error"); //Console 
+        }
+        return city;
+    }
+    
+    
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson()
